@@ -8,14 +8,14 @@
   }
 
   // Fetches POST data if available
-  $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+  $_POST   = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
   $runTest = isset($_POST['run-test']) ? true : false;
   if($runTest) {
     $values = [];
-    foreach($_POST as $key => $value) {
-        if(!in_array($key, ['run-test', 'name', 'email']) && $value !== '') {
-            $values[$key] = $value;
-        }
+    foreach ($_POST as $key => $value) {
+      if (!in_array($key, ['run-test', 'name', 'email']) && $value !== '') {
+        $values[$key] = $value;
+      }
     }
     // If one of the hidden fields isn't empty, autofill has leaked data
     $leaked = implode('', $values) !== '' ? true : false;
@@ -35,8 +35,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
-    .tryhiding { margin-left: -9999px; position: absolute; }
-    .footer { margin-top: 20px; text-align: center; font-size: 12px; background-color: #ddd; }
+      .tryhiding { margin-left: -9999px; position: absolute; }
+      .footer { margin-top: 20px; text-align: center; font-size: 12px; background-color: #ddd; }
     </style>
   </head>
   <body>
@@ -47,14 +47,14 @@
         <p>You can test how your browser behaves by using autofill to fill in your details in the fields below. This test page doesn't save any data, so you'll be safe.</p>
       </div>
       <?php
-        if($runTest) {
-          if(!$leaked) {
+        if ($runTest) {
+          if (!$leaked) {
             echo '<div class="alert alert-success" role="alert"><strong>Great!</strong> Your browser detected the extra fields as hidden and didn\'t supply information without your knowledge! <i>(or you cheated and didn\'t use autofill...)</i></div>';
           } else {
             echo '<div class="alert alert-danger" role="alert"><strong>Oh no!</strong> Your browser exposes too much information to malicious pages. I\'d recommend not using autofill on pages you don\'t trust! See the results below for details.</div>';
             echo '<div class="well"><h2>Information your browser sent:</h2><ul>';
-            foreach($values as $key => $value) {
-                echo '<li>' . $key . ': ' . $value . '</li>';
+            foreach ($values as $key => $value) {
+              echo '<li>' . $key . ': ' . $value . '</li>';
             }
             echo '</ul></div>';
           }
@@ -183,9 +183,9 @@
       </form>
     </div>
     <div class="jumbotron footer">
-        <div class="container">
+      <div class="container">
         <small>&copy; 2017 Aleksi Kallio</small>
-        </div>
+      </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
