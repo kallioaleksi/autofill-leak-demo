@@ -44,7 +44,8 @@
       <div class="jumbotron">
         <h1>Test your brower's autofill</h1>
         <p>Some browsers have a security leak which can expose too much of your autofilled data to the page.</p>
-        <p>You can test how your browser behaves by using autofill to fill in your details in the fields below. This test page doesn't save any data, so you'll be safe.</p>
+        <p>You can test how your browser behaves by using autofill to fill in your details in the fields below.</p>
+        <p>This test page doesn't save any data, so you'll be safe. This page is open source, you can view the source code on <a href="https://github.com/onik/autofill-leak-demo">GitHub</a></p>
       </div>
       <?php
         if ($runTest) {
